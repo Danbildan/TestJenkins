@@ -17,9 +17,28 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            debuggable true
+            minifyEnabled false
+            applicationIdSuffix ".debug"
+
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "marketType"
+    productFlavors {
+        GooglePlay {
+            dimension "marketType"
+            buildConfigField "String", "MARKET_TYPE", "\"GooglePlay\""
+        }
+        AppGallery {
+            dimension "marketType"
+            buildConfigField "String", "MARKET_TYPE", "\"AppGallery\""
         }
     }
 
